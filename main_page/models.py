@@ -24,7 +24,7 @@ class body_block(models.Model):
     date_posted     = models.DateTimeField(auto_now_add=True,auto_now = False,null=True)
     image           = models.ImageField(null = True, upload_to = 'bodyblock_pics')
     paragraph2      = models.TextField(null=True)
-    slug            = models.SlugField(null = True, max_length=10, blank = True)
+    slug            = models.SlugField(null = True, max_length=1000, blank = True)
     hit_count_generic = GenericRelation(HitCount, object_id_field='object_pk')
     def __str__(self):
         return self.post_title

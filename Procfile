@@ -1,0 +1,1 @@
+web: gunicorn smarter_nepal.wsgi --log-file - 
