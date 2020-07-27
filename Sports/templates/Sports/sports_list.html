@@ -1,0 +1,27 @@
+{% extends 'main_page/base.html' %}
+
+{% block trending %}
+<div class="container">
+
+    <h3 class="mt-3"> Sports: </h3><hr>
+    <p class="text-center" style="color: blue;">/* top 3 articles */ </p>
+    <div class="row">
+        {% for objects in top_3 %}
+
+       <div class="col-md-4">
+           <div class="card " style="width: 18rem;">
+                <img src=" {{objects.image.url}}" class="img-fluid img-thumbnail" style="height: 250px; width: 500px;"> </a>
+            </div>
+            <span class="text-muted ml-2" > {{objects.title}}:</span>
+            <a href="#" style="color: black; text-decoration: none;">  
+            <a href="{% url 'sports_detail' objects.slug %}" style="text-decoration: none; color: black;">    <h5 class="card-title  pl-2">  {{objects.post_title}} </h5>
+            </a>  
+            <p class="card-text pl-2">By:<a href="#" style = "text-decoration: none;">  {{user.username}} </a></p>
+           
+         
+       </div>
+       {% endfor %}
+  
+    </div>
+    </div><hr>
+{% endblock %}

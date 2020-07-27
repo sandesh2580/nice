@@ -1,0 +1,29 @@
+{% extends 'main_page/base.html' %}
+{% load static %}
+{% load hitcount_tags %}
+{% block trending %}
+
+<div class="container   mt-5">
+ <div class="row">
+    <div class="col-md-4 ">
+        <img src = "{{top_writer.image.url}}" class="img-fluid rounded-circle " style = "float: left; height: 105px; width: 105px;"> 
+       
+        <h5 class="ml-3" style="float: right"> Total Articles : 20 </h5>
+        <h5 style="float: right">  Article likes <span class="mr-3"></span> : 20 </h5> 
+
+    </div>
+   
+ </div>  
+ <div class="row">
+     <div class="col-md-2">
+        <h5> {{writer.name}} </p>
+        <i class="fa fa-facebook ml-3"></i>
+        <i class="fa fa-twitter"></i>
+        <i class="fa fa-instagram"></i>
+     </div>
+ </div> 
+   
+            
+        
+</div> <hr>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% load static %}
+
+
+<div class="container.my-2 py-2 text-center">
+
+    <p  style="color:blue;text-align: center; ">/* Writer of the week */</p> <hr>
+    <div class="card">
+        <div class="card-body">
+            <img src="{% static '/images/khusi.jpg' %}" alt="" class="img-fluid mb-3" >
+            <h3>Manasi Acharya</h3>
+            <h5>Sports </h5>
+            <p>Specializes athletic writing </p> 
+   <a href="{% url 'writer_of_week' %}"> <button class="btn btn-sm btn-success">view profile</button> </a> 
+        </div>
+    </div>
+</div>
+

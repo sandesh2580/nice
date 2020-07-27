@@ -1,0 +1,121 @@
+{% extends 'main_page/base.html' %}
+{% load static %}
+{% block trending %}
+<div class="container text-center">
+    <div class="row mt-2">
+        <div class="col-md-2  ">
+        <a href="{% url 'trending_page'  %}">  <h5  style="color:blue">#trending:</h5> </a>  
+        </div>
+        <div class="col-md-2  ">
+        <a href="{% url 'trending_top1'  %}">   <h5  style="color:blue">{{title.title}}</h5> </a> 
+            
+        </div>
+        <div class="col-md-2  ">
+            <a href="{% url 'trending_top2'  %}">   <h5  style="color:blue">{{second.title}}</h5> </a> 
+                
+        </div>
+        <div class="col-md-2  ">
+                <a href="{% url 'trending_top3' %}">   <h5  style="color:blue">{{third.title}}</h5> </a> 
+                    
+        </div>
+        <div class="col-md-2  ">
+            <a href="{% url 'trending_top4'  %}">   <h5  style="color:blue">{{fourth.title}}</h5> </a> 
+                
+        </div>
+    </div><hr>
+
+</div>
+
+  
+{% endblock %}
+
+{% block bodyblock %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-9 mt-3">
+            <h2><em> <a href= "{% url 'homepage_body' top_6.slug  %}" style="color: black;">{{top_6.post_title}} </a>   </em></h2>
+            <img src="{{top_6.image.url}}" class="img img-fluid">
+
+            <br><br><br><br>
+           <h7> <p style="color: rgb(55, 55, 187); text-align: center;" >/* latest articles */</p></h7>
+            <div class="row">
+                {% for objects in top %}
+                <div class="col-md-4 mb-4 col-sm-6">
+                            <img src="{{objects.image.url}}" class=" img-fluid text-center" style="height: 250px; width: 500px;"> <br>
+                            <span class="text-muted "> {{objects.title}}  </span> <br> 
+                            <span class="mt-0 mb-0"> By: <a href = ""> {{objects.author}} </a>  </span>
+                           <a href = "{% url 'homepage_body' objects.slug %}" style="color:black;"><h6> {{objects.post_title}} </h6></a> 
+                </div>
+                {% endfor %}
+            </div> 
+
+            
+        </div>
+        <div class="col-md-3 mt-4 " style="float: right;">
+            {% include 'main_page/writer_of_week.html' %}
+
+           </div>
+       
+    </div>
+</div>
+<hr>
+
+<div class="fluid-container">
+    <div class="row">
+        <div class="col-md-9">
+            <h7> <p style="color: rgb(55, 55, 187); text-align: center;" >/* Top Articles  */</p></h7>
+            <div class="row">
+            {% for objects in top_3 %}
+ 
+            <div class="col-md-4">
+                <div class="card " style="width: 18rem;">
+                     <img src=" {{objects.image.url}}" class="img-fluid" style="height: 250px; width: 500px;"> </a>
+                 </div>
+                 <span class="text-muted ml-2" > {{objects.title}}:</span>
+                 <a href="#" style="color: black; text-decoration: none;">  
+                 <a href="{% url 'politics_detail' objects.slug %}" style="text-decoration: none; color: black;">    <h5 class="card-title  pl-2">  {{objects.post_title}} </h5>
+                 </a>  
+                 <p class="card-text pl-2">By:<a href="#" style = "text-decoration: none;">  {{user.username}} </a></p>
+                
+             </div>
+            
+            {% endfor %}
+
+          </div>
+            
+        
+        </div>
+        <div class="col-md-3">
+            <h7> <p style="color: blue; text-align: center;" >/* Corona Virus */</p></h7>
+            {% for objects in top_3 %}
+
+             <h5>
+                <a href="{% url 'politics_detail' objects.slug %}" style="color: rgb(0, 0, 0);">{{objects.post_title}}</a>             
+            </h5> <hr>
+            {% endfor %}  
+        </div>
+    </div>
+</div><hr>
+
+<div class="container text-center">
+    <h5 class="mb-4"> /* top 3 writers */ </h5>
+    <div class="row">
+        {% for objects in writers %}
+        <div class="col-lg-3 col-md-6  mb-3 ">
+            <div class="card">
+                <div class="card-body">
+                    <img src=" {{objects.image.url}} " alt="" class="img-fluid rounded-circle w-50 mb-3">
+                    <h3> {{objects.name}} </h3>
+                    <h5> {{objects.topics}}  </h5>
+                    <p> Specializes in {{objects.soeciality}} writing </p>
+                 <a href="{% url 'writer' objects.slug %}"> <button class="btn btn-sm btn-success">view profile</button></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+   
+</div> <hr>
+
+
+
+{% endblock %}
